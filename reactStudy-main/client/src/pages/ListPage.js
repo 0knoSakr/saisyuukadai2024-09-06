@@ -17,6 +17,9 @@ const ListPage = () => {
         <li>現在契約本数</li>
         <li>アポ先部署</li>
       </ul>
+      <button>新規登録</button>
+      <Link to="">詳細ページ</Link>
+      <button>編集</button>
     </div>
   );
 };
