@@ -37,10 +37,10 @@ function App() {
     return (
       <Router>
         <Routes>
-          <Route path="/customers" element={<ListPage />} />
-          <Route path="/customers/new" element={<NewCustomerPage />} />
-          <Route path="/customers/edit/:id" element={<EditCustomerPage />} />
-          <Route path="/customers/:id" element={<DetailPage />} />
+          <Route path="/customers" element={<ListPage />} />{/**一覧ページ */ }
+          <Route path="/customers/new" element={<NewCustomerPage />} />{ /**新規登録ページ */}
+          <Route path="/customers/edit/:id" element={<EditCustomerPage />} />{/**編集ページ */}
+          <Route path="/customers/:id" element={<DetailPage />} />{/**詳細ページ */}
         </Routes>
       </Router>
     );
