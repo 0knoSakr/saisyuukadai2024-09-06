@@ -1,9 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client'; // 'react-dom/client' からインポート
 import App from './App';
 
-// Appコンポーネントをルート要素にレンダリング
-ReactDOM.render(
-    <App />, // Appコンポーネントを描画
-  document.getElementById('root') // HTMLファイル内のid="root"の要素に描画
-);
+// React 18 での新しいAPIを使って、Appコンポーネントをルート要素にレンダリング
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);

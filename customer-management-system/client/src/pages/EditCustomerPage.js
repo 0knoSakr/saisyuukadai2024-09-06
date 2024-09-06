@@ -1,24 +1,11 @@
-import React from "react";
+// /src/pages/EditCustomerPage.js
+import React from 'react';
 
 const EditCustomerPage = () => {
   return (
     <div>
       <h1>顧客編集ページ</h1>
-      <ul>
-        <li>アポ日付</li>
-        <li>契約した売上</li>
-        <li>会社名</li>
-        <li>会社名かな</li>
-        <li>担当者名</li>
-        <li>資本金</li>
-        <li>従業員数</li>
-        <li>URL</li>
-        <li>現在契約本数</li>
-        <li>アポ先部署</li>
-        <li>会社の所在地</li>
-        <li>アポ内容</li>
-        <li>目標数値</li>
-      </ul>
+      {/* ここに編集フォームを表示するコンポーネントを追加 */}
     </div>
   );
 };
