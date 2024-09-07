@@ -2,6 +2,10 @@
 import React from 'react';
 
 const EditCustomerPage = () => {
+  let textBoxStyle = {
+    title: 'textboxstyle',
+    className: 'textBox',
+  };
   return (
     <div>
       <h1>顧客編集ページ</h1>
@@ -23,7 +27,7 @@ const EditCustomerPage = () => {
         </tr>
       </thead>
       <tbody>
-        <td><input type="text"/></td>
+        <td><input type="text" {...textBoxStyle}/></td>
         <td><input type="text"/></td>
         <td><input type="text"/></td>
         <td><input type="text"/></td>

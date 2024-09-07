@@ -75,6 +75,10 @@ li {
   padding-left: 10px;
 }
 
+.input-textbpx {
+  width: 50px;
+}
+
 /* メディアクエリを追加してレスポンシブ対応 */
 @media (max-width: 600px) {
   .textBox input, .textBox button {
