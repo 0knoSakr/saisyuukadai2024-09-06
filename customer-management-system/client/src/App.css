@@ -47,14 +47,33 @@ ul {
   list-style-type: none;
   padding-inline-start: 0;
   margin: 0;
+  padding-left: 0;
+  display: flex;
+  justify-content: flex-end;
 }
 
-li {
+li{
   margin: 5px 0;
   padding: 10px;
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
+  background-color: #00a59a;
   border-radius: 4px;
+  margin-right: 10px;
+}
+
+li a{
+  text-decoration: none;
+  color: #FFF;
+}
+
+button{
+  margin: 5px 0;
+  padding: 10px;
+  width: 150px;
+  background-color: #00a59a;
+  border: none;
+  border-radius: 4px;
+  font-size: 18px;
+  color: #FFF;
 }
 
 .user-info {
@@ -73,10 +92,6 @@ li {
   flex-grow: 1;
   text-align: right;
   padding-left: 10px;
-}
-
-.input-textbpx {
-  width: 50px;
 }
 
 /* メディアクエリを追加してレスポンシブ対応 */

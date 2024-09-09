@@ -1,5 +1,6 @@
 // /src/pages/DetailPage.js
 import React from "react";
+import '../App.css'
 
 const DetailPage = () => {
   const datePage = [

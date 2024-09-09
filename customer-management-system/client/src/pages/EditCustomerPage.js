@@ -1,5 +1,6 @@
 // /src/pages/EditCustomerPage.js
 import React from "react";
+import '../App.css'
 
 const EditCustomerPage = () => {
   const editPage = [
@@ -16,6 +17,36 @@ const EditCustomerPage = () => {
     "会社の所在地",
     "アポ内容",
     "目標数値",
+  ];
+
+  const customerData = [
+    {
+      date: "2024/3/4",
+      sales: "378,000",
+      name: "A社",
+      namekana: "えーしゃ",
+      manager: "山田太郎",
+      capital: "30,000,000",
+      employees: "400",
+      url: "http://test.com",
+      contracts: "2",
+      department: "総務部",
+      "大阪府大阪市北区梅田2-2-2",
+    "マーケティング戦略の見直しと改善提案",
+    "売上目標1500万円"
+    },
+    {
+      date: "2024/3/8",
+      sales: "150,000",
+      name: "B社",
+      namekana: "びーしゃ",
+      manager: "佐藤次郎",
+      capital: "30,000,000",
+      employees: "350",
+      url: "http://test.com",
+      contracts: "1",
+      department: "総務部",
+    },
   ];
 
   const textBoxStyle = {
