@@ -2,24 +2,15 @@
 import React from "react";
 
 const NewCustomerPage = () => {
+  const newPage = ["アポ日付", "契約した売上", "会社名", "会社名かな", "担当者名", "資本金", "従業員数", "URL", "現在契約本数", "アポ先部署", "会社の所在地", "アポ内容", "目標数値"];
   return (
     <div>
       <h1>新規顧客登録ページ</h1>
       <thead>
         <tr>
-          <th>アポ日付</th>
-          <th>契約した売上</th>
-          <th>会社名</th>
-          <th>会社名かな</th>
-          <th>担当者名</th>
-          <th>資本金</th>
-          <th>従業員数</th>
-          <th>URL</th>
-          <th>現在契約本数</th>
-          <th>アポ先部署</th>
-          <th>会社の所在地</th>
-          <th>アポ内容</th>
-          <th>目標数値</th>
+          {newPage.map((value, index) => (
+            <th key={index}>{value}</th>
+          ))}
         </tr>
       </thead>
     </div>
