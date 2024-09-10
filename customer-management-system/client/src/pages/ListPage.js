@@ -1,9 +1,15 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../App.css";
+import useCategories from "../hooks/useCategories";
 
 const ListPage = () => {
   const navigate = useNavigate();
+
+  const { categoryList, refreshCategories } = useCategories();
+  console.log('categoryList:', categoryList);
+  console.log('refreshCategories:', refreshCategories);
+
   const listPage = [
     "アポ日付",
     "契約した売上",
@@ -18,32 +24,32 @@ const ListPage = () => {
     "",
   ];
 
-  const customerData = [
-    {
-      date: "2024/3/4",
-      sales: "378,000",
-      name: "A社",
-      namekana: "えーしゃ",
-      manager: "山田太郎",
-      capital: "30,000,000",
-      employees: "400",
-      url: "http://test.com",
-      contracts: "2",
-      department: "総務部",
-    },
-    {
-      date: "2024/3/8",
-      sales: "150,000",
-      name: "B社",
-      namekana: "びーしゃ",
-      manager: "佐藤次郎",
-      capital: "30,000,000",
-      employees: "350",
-      url: "http://test.com",
-      contracts: "1",
-      department: "総務部",
-    },
-  ];
+  // const customerData = [
+  //   {
+  //     date: "2024/3/4",
+  //     sales: "378,000",
+  //     name: "A社",
+  //     namekana: "えーしゃ",
+  //     manager: "山田太郎",
+  //     capital: "30,000,000",
+  //     employees: "400",
+  //     url: "http://test.com",
+  //     contracts: "2",
+  //     department: "総務部",
+  //   },
+  //   {
+  //     date: "2024/3/8",
+  //     sales: "150,000",
+  //     name: "B社",
+  //     namekana: "びーしゃ",
+  //     manager: "佐藤次郎",
+  //     capital: "30,000,000",
+  //     employees: "350",
+  //     url: "http://test.com",
+  //     contracts: "1",
+  //     department: "総務部",
+  //   },
+  // ];
 
   const tableBorder = {
     borderCollapse: "collapse",
@@ -84,7 +90,7 @@ const ListPage = () => {
           </tr>
         </thead>
         <tbody>
-          {customerData.map((value, index) => (
+          {categoryList.map((value, index) => (
             <tr key={index}>
               <td style={cellStyle}>{value.date}</td>
               <td style={cellStyle}>{value.sales}</td>
@@ -97,7 +103,7 @@ const ListPage = () => {
               <td style={cellStyle}>{value.contracts}</td>
               <td style={cellStyle}>{value.department}</td>
               <td style={cellStyle}>
-                <Link to="/:id">詳細情報</Link>
+                <Link to={`/${value.id}`}>詳細情報</Link>
               </td>
             </tr>
           ))}

@@ -9,7 +9,7 @@ const db = mysql.createPool({
   host: "localhost", // データベースのホスト名
   user: "root", // データベースのユーザー名
   password: "rootroot", // データベースのパスワード
-  database: "express_db" // 使用するデータベースの名前
+  database: "customer_db" // 使用するデータベースの名前
 });
 
 // ミドルウェアを設定
@@ -17,12 +17,12 @@ app.use(express.json()); // JSONデータを解析するミドルウェア
 app.use(cors()); // CORSを許可するミドルウェア
 
 // ユーザーのデータを取得するためのGETリクエストハンドラー
-app.get("/api/get/users", (req, res) => {
-  const sqlSelect = "SELECT * FROM users ORDER BY id"; // SQLクエリで全ユーザーをID順に取得
+app.get("/api/get/user", (req, res) => {
+  const sqlSelect = "SELECT * FROM user ORDER BY id"; // SQLクエリで全ユーザーをID順に取得
   db.query(sqlSelect, (err, result) => {
     if (err) {
       console.error(err); // エラーがあればコンソールに表示
-      res.status(500).send("Error retrieving users from the database"); // エラーメッセージを返す
+      res.status(500).send("Error retrieving user from the database"); // エラーメッセージを返す
     } else {
       res.send(result); // 取得したユーザー情報を返す
     }
