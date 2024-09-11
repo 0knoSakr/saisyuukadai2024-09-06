@@ -7,8 +7,6 @@ const ListPage = () => {
   const navigate = useNavigate();
 
   const { categoryList, refreshCategories } = useCategories();
-  console.log('categoryList:', categoryList);
-  console.log('refreshCategories:', refreshCategories);
 
   const listPage = [
     "アポ日付",
@@ -23,33 +21,6 @@ const ListPage = () => {
     "アポ先部署",
     "",
   ];
-
-  // const customerData = [
-  //   {
-  //     date: "2024/3/4",
-  //     sales: "378,000",
-  //     name: "A社",
-  //     namekana: "えーしゃ",
-  //     manager: "山田太郎",
-  //     capital: "30,000,000",
-  //     employees: "400",
-  //     url: "http://test.com",
-  //     contracts: "2",
-  //     department: "総務部",
-  //   },
-  //   {
-  //     date: "2024/3/8",
-  //     sales: "150,000",
-  //     name: "B社",
-  //     namekana: "びーしゃ",
-  //     manager: "佐藤次郎",
-  //     capital: "30,000,000",
-  //     employees: "350",
-  //     url: "http://test.com",
-  //     contracts: "1",
-  //     department: "総務部",
-  //   },
-  // ];
 
   const tableBorder = {
     borderCollapse: "collapse",
