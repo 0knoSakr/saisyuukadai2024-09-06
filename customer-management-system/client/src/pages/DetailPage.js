@@ -1,7 +1,8 @@
 // /src/pages/DetailPage.js
 import React from "react";
 import "../App.css";
-import useCategories from "../hooks/useCategories";
+import { useParms } from 'react-router-dom';
+import api from "../services/api"
 
 const DetailPage = () => {
   const { categoryList, refreshCategories } = useCategories();
