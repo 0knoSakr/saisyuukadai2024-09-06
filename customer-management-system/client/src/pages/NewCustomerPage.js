@@ -1,33 +1,41 @@
-// /src/pages/NewCustomerPage.js
-import React from "react";
-import "../App.css";
+import React, { useState } from "react";
+import api from "../services/api";
+import CustomerForm from "../components/CustomerForm";
 
 const NewCustomerPage = () => {
-  const newPage = [
-    "アポ日付",
-    "契約した売上",
-    "会社名",
-    "会社名かな",
-    "担当者名",
-    "資本金",
-    "従業員数",
-    "URL",
-    "現在契約本数",
-    "アポ先部署",
-    "会社の所在地",
-    "アポ内容",
-    "目標数値",
-  ];
+  const [formData, setFormData] = useState({
+    companyName: '',
+    contactPerson: '',
+    email: '',
+    phone: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await api.post('/customers', formData);
+      alert('顧客が追加されました');
+      window.location.href = '/customers';
+    } catch (error) {
+      console.error('エラー:', error);
+    }
+  };
+
   return (
     <div>
-      <h1>新規顧客登録ページ</h1>
-      <thead>
-        <tr>
-          {newPage.map((value, index) => (
-            <th key={index}>{value}</th>
-          ))}
-        </tr>
-      </thead>
+      <h1>新規顧客登録</h1>
+      <CustomerForm
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 };

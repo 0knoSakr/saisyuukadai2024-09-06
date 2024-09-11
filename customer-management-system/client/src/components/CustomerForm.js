@@ -5,11 +5,11 @@ const CustomerForm = ({ formData, handleChange, handleSubmit }) => {
     <form onSunmit={handleSubmit}>
       <div>
         <label>会社名:</label>
-        <input type="text" name="name" value={formData.name} onChange={handleChange} />
+        <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} />
       </div>
       <div>
         <label>担当者名:</label>
-        <input type="text" name="manager" value={formData.manager} onChange={handleChange} />
+        <input type="text" name="contactPerson" value={formData.contactPerson} onChange={handleChange} />
       </div>
       <div>
         <label>メールアドレス:</label>
