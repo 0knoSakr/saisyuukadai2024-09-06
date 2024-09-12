@@ -3,43 +3,19 @@ import CustomerCard from "../components/CustomerCard";
 import api from "../services/api";
 
 const ListPage = () => {
-  const [ customers, setCustomer ] = useState([]);
+  const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
-    const fetchCustomer = async () => {
+    const fetchCustomers = async () => {
       try {
         const response = await api.get('/customers');
-        setCustomer(response.data);
+        setCustomers(response.data);
       } catch (error) {
         console.error('データの取得に失敗しました', error);
       }
-    }
-    fetchCustomer();
+    };
+    fetchCustomers();
   }, []);
-
-  // const tableBorder = {
-  //   borderCollapse: "collapse",
-  //   width: "100%",
-  //   border: "1px solid black",
-  // };
-
-  // const cellStyle = {
-  //   border: "1px solid black",
-  //   padding: "8px",
-  //   backgroundColor: "#FFF",
-  // };
-
-  // const tableHeadStyle = {
-  //   ...cellStyle,
-  //   backgroundColor: "#f2f2f2",
-  // };
-
-  // const wrap = {
-  //   style: {
-  //     maxWidth: "1100px",
-  //     margin: "0 auto",
-  //   },
-  // };
 
   return (
     <div>
@@ -49,6 +25,7 @@ const ListPage = () => {
       ))}
       <button onClick={() => window.location.href = "/customers/new"}>新規登録</button>
     </div>
-  )
+  );
 };
+
 export default ListPage;
