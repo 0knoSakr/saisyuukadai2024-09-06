@@ -6,8 +6,8 @@ const CustomerCard = ({ customer }) => {
     <div className="customer-card">
       <h3>{customer.companyName}</h3>
       <p>担当者:{customer.contactPerson}</p>
-      <Link to={`/customers/${customer.id}`}>詳細</Link>
-      <Link to={`/customer/edit/${customer.id}`}>編集</Link>
+      <Link to={`/${customer.id}`}>詳細</Link>
+      <Link to={`/edit/${customer.id}`}>編集</Link>
     </div>
   );
 };

@@ -28,9 +28,6 @@ const EditCustomerPage = () => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-
-      [e.target.name]: e.target.value,
-
     });
 
   };
@@ -39,7 +36,7 @@ const EditCustomerPage = () => {
     try {
       await api.put(`/customers/${id}`, formData);
       alert("顧客情報が更新されました");
-      window.location.href = '/customers';
+      window.location.href = '/';
     } catch (error) {
       console.error('エラー:', error);
     }
