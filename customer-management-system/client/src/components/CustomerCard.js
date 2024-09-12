@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const CustomerCard = ({ customer }) => {
   return (
-    <div classNamr="customer-card">
+    <div className="customer-card">
       <h3>{customer.companyName}</h3>
       <p>担当者:{customer.contactPerson}</p>
       <Link to={`/customers/${customer.id}`}>詳細</Link>

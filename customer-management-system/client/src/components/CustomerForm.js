@@ -2,7 +2,7 @@ import React from 'react';
 
 const CustomerForm = ({ formData, handleChange, handleSubmit }) => {
   return (
-    <form onSunmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div>
         <label>会社名:</label>
         <input type="text" name="companyName" value={formData.companyName} onChange={handleChange} />
