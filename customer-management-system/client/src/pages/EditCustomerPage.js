@@ -1,48 +1,56 @@
 // /src/pages/EditCustomerPage.js
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
+import api from '../services/api';
+import CustomerForm from "../components/CustomerForm";
 
 const EditCustomerPage = () => {
-  let textBoxStyle = {
-    title: 'textboxstyle',
-    className: 'textBox',
+  const { id } = useParams();
+  const [formData, setFormData] = useState({
+    companyName: '',
+    contactPerson: '',
+    email: '',
+    phone: ''
+  });
+  useEffect(() => {
+    const fetchCustomer = async () => {
+      try {
+        const response = await api.get(`/customers/${id}`);
+        setFormData(response.data);
+      } catch (error) {
+        console.error('データ取得エラー:', error);
+      }
+    };
+    fetchCustomer();
+  }, [id]);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await api.put(`/customers/${id}`, formData);
+      alert("顧客情報が更新されました");
+      window.location.href = '/';
+    } catch (error) {
+      console.error('エラー:', error);
+    }
   };
   return (
     <div>
-      <h1>顧客編集ページ</h1>
-      <thead>
-        <tr>
-          <th>アポ日付</th>
-          <th>契約した売上</th>
-          <th>会社名</th>
-          <th>会社名かな</th>
-          <th>担当者名</th>
-          <th>資本金</th>
-          <th>従業員数</th>
-          <th>URL</th>
-          <th>現在契約本数</th>
-          <th>アポ先部署</th>
-          <th>会社の所在地</th>
-          <th>アポ内容</th>
-          <th>目標数値</th>
-        </tr>
-      </thead>
-      <tbody>
-        <td><input type="text" {...textBoxStyle}/></td>
-        <td><input type="text"/></td>
-        <td><input type="text"/></td>
-        <td><input type="text"/></td>
-        <td><input type="text"/></td>
-        <td><input type="text"/></td>
-        <td><input type="text"/></td>
-        <td><input type="text"/></td>
-        <td><input type="text"/></td>
-        <td><input type="text"/></td>
-        <td><input type="text"/></td>
-        <td><input type="text"/></td>
-        <td><input type="text"/></td>
-      </tbody>
+      <h1>顧客情報編集</h1>
+      <CustomerForm
+        formData={formData}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+      />
     </div>
-  );
+  )
 };
 
 export default EditCustomerPage;

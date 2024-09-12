@@ -1,72 +1,37 @@
 // /src/pages/DetailPage.js
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import api from "../services/api";
+import "../App.css";
 
 const DetailPage = () => {
+  const [customer, setCustomer] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchCustomer = async () => {
+      try {
+        const response = await api.get(`/customers/${id}`);
+        setCustomer(response.data);
+      } catch (error) {
+        console.error("顧客情報の取得に失敗しました", error);
+      }
+    };
+    fetchCustomer();
+  }, [id]);
+
+  if (!customer) {
+    return <div>Loading...</div>
+  }
+
   return (
     <div>
-      <h1>顧客詳細ページ</h1>
-      <table>
-        <tr>
-          <th>会社名</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>会社の所在地</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>資本金</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>アポ日付</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>契約した売上</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>現在契約本数</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>アポ先部署</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>担当者名</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>ふりがな</th>
-          <td></td>
-        </tr>
-        <tr>
-          <th>会社URL</th>
-          <td></td>
-        </tr>
-      </table>
-      <table>
-        <tr><th>商談履歴</th></tr>
-        <tr><td></td></tr>
-        <tr><th>〇〇業務に関する商談</th></tr>
-        <tr><td></td></tr>
-        <tr><th>〇〇案件に関する打合せ</th></tr>
-        <tr><th>ToDoリスト</th></tr>
-        <tr><th>目標数値</th></tr>
-        <tr>
-          <td>10,000,000</td>
-          <td><button>編集</button></td>
-        </tr>
-        <tr><td>目標数値と現在数値までいくらか</td></tr>
-        <tr>
-          <td>残り</td>
-          <td>￥6,000,000</td>
-        </tr>
-      </table>
+      <h1>顧客詳細情報</h1>
+      <p>会社名:{customer.companyName}</p>
+      <p>担当者名:{customer.contactPerson}</p>
+      <p>メールアドレス:{customer.email}</p>
+      <p>電話番号:{customer.phone}</p>
     </div>
-  );
+  )
 };
-
 export default DetailPage;
