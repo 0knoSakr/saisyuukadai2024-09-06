@@ -8,14 +8,22 @@ const ListPage = () => {
   useEffect(() => {
     const fetchCustomers = async () => {
       try {
-        const response = await api.get('/customers');
+        const response = await api.get("/customers");
         setCustomers(response.data);
       } catch (error) {
-        console.error('データの取得に失敗しました', error);
+        console.error("データの取得に失敗しました", error);
       }
     };
     fetchCustomers();
   }, []);
+
+  customers.sort(function (a, b) {
+    if (a.email > b.email) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
 
   return (
     <div>
@@ -23,7 +31,9 @@ const ListPage = () => {
       {customers.map((customer) => (
         <CustomerCard key={customer.id} customer={customer} />
       ))}
-      <button onClick={() => window.location.href = "/customers/new"}>新規登録</button>
+      <button onClick={() => (window.location.href = "/customers/new")}>
+        新規登録
+      </button>
     </div>
   );
 };
